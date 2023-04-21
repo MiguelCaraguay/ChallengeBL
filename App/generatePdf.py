@@ -2,7 +2,7 @@ import fitz
 
 def generatePdf(path,file_name, order_information, transaction_information):
 
-    logo = open('logoBanco.png', 'rb').read()
+    logo = open(r'..\logoBanco.png', 'rb').read()
 
     title = 'SERVICIOS CORPORATIVOS\nCOMPROBANTE DE TRANSACCION\nTRANSFERENCIA INTERBANCARIA'
     originator_title = 'INFORMACIÓN DEL ORDENANTE'
@@ -12,9 +12,9 @@ def generatePdf(path,file_name, order_information, transaction_information):
     x1= 595
     y1= 842
     fontsize =10
+
     doc = fitz.open()
     size = fitz.paper_size("A4")
-    print(size)
     pagina = doc.new_page(width= size[0], height=size[1])
     rect = fitz.Rect(x, 0, 300, 100)  
 
@@ -28,7 +28,6 @@ def generatePdf(path,file_name, order_information, transaction_information):
     pagina.insert_textbox(fitz.Rect(x, 400, x1, y1), transaction_information, color=0, fontsize=fontsize, align=0)
 
     path = path + "/"+file_name + ".pdf"
-    print(path)
     doc.write()
     # Guardamos el archivo PDF
     doc.save(path , pretty=True)

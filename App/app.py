@@ -15,7 +15,7 @@ class GUI(QMainWindow):
     def __init__(self):
         super(GUI, self).__init__()
         # load file
-        uic.loadUi("gui.ui",self)
+        uic.loadUi(r"..\gui.ui",self)
 
         self.title = self.findChild(QLabel, "title")
         self.select_file = self.findChild(QPushButton, "selectFile")
@@ -47,11 +47,17 @@ class GUI(QMainWindow):
 
     def generate_btn_handler(self):
         rows = readFile(self.loaded_file_path)
-        
-        for row in rows:
-            (file_name, order_information, transaction_information) = generateReportFile(row)
-            generatePdf(self.loaded_folder_path,file_name, order_information, transaction_information)
+        try:
+            print("-----------------------------Creando---------------------------")
+            for i,row in enumerate(rows):
+                (file_name, order_information, transaction_information) = generateReportFile(row)
+                file_name = file_name + str(i)
+                print("archivo " + str(i)+" creado")
+                generatePdf(self.loaded_folder_path,file_name, order_information, transaction_information)
 
+            print("----------SE HAN GENERADO CORRECTAMENTE LOS PDF--------------")
+        except Exception as inst:
+            print(inst)   
         
 # Initialice App
 app = QApplication(sys.argv)
