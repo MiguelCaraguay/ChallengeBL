@@ -22,27 +22,27 @@ def generateReportFile(row):
     estado_transaccion=data[16]
 
     
-    order_information =("Nombre del Cliente:\n\t%s\n"
-                       +"Identificacion:\n\t%s\n"
-                       +"Cuenta débito:\n\t%s\n"
-                       +"Comisión:\n\t%s\n"
-                       +"Nro. de transacción por cuenta:\n\t%s\n"
-                       +"Aprobadores:\n\t%s\n")%(nombre_cliente, cta_debito,identificacion, comision,nro_transaccion_por_cuenta, aprobadores)
-    order_information.upper()
+    order_information =("Nombre del Cliente:\n\t\t\t%s\n"
+                       +"Identificacion:\n\t\t\t%s\n"
+                       +"Cuenta débito:\n\t\t\t%s\n"
+                       +"Comisión:\n\t\t\t%s\n"
+                       +"Nro. de transacción por cuenta:\n\t\t\t%s\n"
+                       +"Aprobadores:\n\t\t\t%s\n")%(nombre_cliente, cta_debito,identificacion, comision,nro_transaccion_por_cuenta, aprobadores)
+    order_information = order_information.upper()
 
-    transaction_information =("Nombre del Beneficiario:\n\t%s\n"+
-                             "Identificacion:\n\t%s\n"+
-                             "Institucion Financiera Receptora:\n\t%s\n"+
-                             "Cuenta crédito:\n\t%s\n"+
-                             "Valor:\n\t%s\n"+
-                             "Referencia de la transacción:\n\t%s\n"+
-                             "Fecha de Ingreso:\n\t%s\n"+
-                             "Fecha de aprobación:\n\t%s\n"+
-                             "Observaciones:\n\t%s\n"+
-                             "Estado de la transacción:\n\t%s\n")%(nombre_beneficiario,identificacion_beneficiario, 
+    transaction_information =("Nombre del Beneficiario:\n\t\t\t%s\n"+
+                             "Identificacion:\n\t\t\t%s\n"+
+                             "Institucion Financiera Receptora:\n\t\t\t%s\n"+
+                             "Cuenta crédito:\n\t\t\t%s\n"+
+                             "Valor:\n\t\t\t%s\n"+
+                             "Referencia de la transacción:\n\t\t\t%s\n"+
+                             "Fecha de Ingreso:\n\t\t\t%s\n"+
+                             "Fecha de aprobación:\n\t\t\t%s\n"+
+                             "Observaciones:\n\t\t\t%s\n"+
+                             "Estado de la transacción:\n\t\t\t%s\n")%(nombre_beneficiario,identificacion_beneficiario, 
                              institucion_financiera_receptora, cta_credito, valor, referencia_transaccion, 
                              fecha_ingreso, fecha_aprobacion,observaciones, estado_transaccion)
-    transaction_information.upper()
+    transaction_information =transaction_information.upper()
 
     file_name = ("%s %s")% (batch,nombre_cliente)
 
